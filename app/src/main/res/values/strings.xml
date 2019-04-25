@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Pocket Manager</string>
+    <string name="expenses">Expenses</string>
+    <string name="income">Income</string>
+    <string name="categories">Categories</string>
+    <string name="statistics">Statistics</string>
+    <string name="reminders">Reminders</string>
+    <string name="confirm">Confirm</string>
+    <string name="delete">Delete</string>
+    <string name="history">History</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="transaction">Transaction</string>
+    <string name="overview">Overview</string>
+    <string name="your_total_expense">Your total expense</string>
+    <string name="total_expense_amt">00.00</string>
+    <string name="tv_amount">amount</string>
+    <string name="tv_date">DD/MM/YYYY</string>
+
+    <string name="cat_general">General</string>
+    <string name="cat_clothes">Clothes</string>
+    <string name="cat_entertainment">Entertainment</string>
+    <string name="cat_food">Food</string>
+    <string name="cat_health">Health</string>
+    <string name="cat_household">Household</string>
+    <string name="cat_hygiene">Hygiene</string>
+    <string name="cat_pets">Pets</string>
+    <string name="cat_presents">Presents</string>
+    <string name="cat_sports">Sports</string>
+    <string name="cat_transportation">Transportation</string>
+
+    <string-array name="predefined_categories">
+        <item>@string/cat_general</item>
+        <item>@string/cat_clothes</item>
+        <item>@string/cat_entertainment</item>
+        <item>@string/cat_food</item>
+        <item>@string/cat_health</item>
+        <item>@string/cat_household</item>
+        <item>@string/cat_hygiene</item>
+        <item>@string/cat_pets</item>
+        <item>@string/cat_presents</item>
+        <item>@string/cat_sports</item>
+        <item>@string/cat_transportation</item>
+    </string-array>
+</resources>
