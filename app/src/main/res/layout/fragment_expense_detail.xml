@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:gravity="center_horizontal"
+    android:layout_height="match_parent">
+
+
+    <Button
+        android:id="@+id/btn_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/primary_dark"
+        android:layout_marginTop="30dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:elevation="2dp"/>
+
+    <Spinner
+        android:id="@+id/sp_categories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        style="@style/PocketManagerSpinner"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="100dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_gravity="end"
+        android:layout_height="wrap_content" >
+        <EditText
+            android:id="@+id/et_total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            style="@style/PocketManagerEditText"
+            android:hint="@string/total"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            style="@style/PocketManagerButton"
+            android:text="@string/cancel"/>
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_width="120dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            style="@style/PocketManagerButton"
+            android:text="@string/save"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -39,10 +39,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp">
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/trans_recycler_view"
+
+        <ListView
+            android:id="@+id/trans_list_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:id="@+id/expenses_empty_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/add_expense_button_if_empty_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="@string/no_expense_yet"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

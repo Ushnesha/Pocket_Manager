@@ -29,6 +29,27 @@
     <string name="cat_presents">Presents</string>
     <string name="cat_sports">Sports</string>
     <string name="cat_transportation">Transportation</string>
+    <string name="no_expense_yet">No expense yet.</string>
+    <string name="delete_string">Delete</string>
+    <string name="add_expense">New expense</string>
+    <string name="edit_expense">Edit expense</string>
+    <string name="delete_expense">Delete expense</string>
+    <string name="delete_exp_dialog_msg">Are you sure you want to delete the expense?</string>
+    <string name="expense_deleted">Expense deleted</string>
+    <string name="expense_added">Expense added</string>
+    <string name="expense_updated">Expense updated</string>
+    <string name="expense_category_name_string">Category</string>
+    <string name="total">Total</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="error_empty_field">Empty Field</string>
+    <string name="error_zero_value">Zero Value</string>
+    <string name="incorrect_input">Incorrect Input</string>
+    <string name="string_no_categories">No Categories</string>
+    <plurals name="expenses_deleted_plurals_msg">
+        <item quantity="one">%d expense deleted</item>
+        <item quantity="other">%d expenses deleted</item>
+    </plurals>
 
     <string-array name="predefined_categories">
         <item>@string/cat_general</item>
