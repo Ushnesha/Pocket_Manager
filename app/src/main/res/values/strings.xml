@@ -46,6 +46,23 @@
     <string name="error_zero_value">Zero Value</string>
     <string name="incorrect_input">Incorrect Input</string>
     <string name="string_no_categories">No Categories</string>
+    <string name="total_string">Total</string>
+    <string name="no_expenses">No expenses</string>
+
+    <string name="filter_expenses">Filter</string>
+    <string name="filter_option_today">By Today</string>
+    <string name="filter_option_week">By Week</string>
+    <string name="filter_option_month">By Month</string>
+    <string name="filter_option_date">By Date</string>
+    <string name="filter_option_range">By Date range</string>
+    <string name="filter_todays_expenses">Today\'s expenses</string>
+    <string name="filter_weeks_expenses">Week\'s expenses</string>
+    <string name="filter_months_expenses">Month\'s expenses</string>
+    <string name="filter_date_expenses">For %s</string>
+    <string name="filter_date_range_expenses">%1$s - %2$s</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+
     <plurals name="expenses_deleted_plurals_msg">
         <item quantity="one">%d expense deleted</item>
         <item quantity="other">%d expenses deleted</item>

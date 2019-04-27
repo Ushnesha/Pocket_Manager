@@ -10,7 +10,7 @@ public class ExpenseDetailActivity extends BaseFragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         insertFragment(new ExpenseDetailFragment());
-        setupActionBar();
+
     }
 
     private void setupActionBar() {

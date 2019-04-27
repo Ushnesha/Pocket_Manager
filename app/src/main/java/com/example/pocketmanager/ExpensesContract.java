@@ -41,6 +41,8 @@ public class ExpensesContract {
         public static final String DEFAULT_SORT_ORDER = DATE + " ASC";
 
         public static final String VALUES_SUM = "values_sum";
+
+        public static final Uri EXPENSES_SUM_URI=Uri.withAppendedPath(CONTENT_URI,"sum");
     }
 
     public static class ExpensesWithCategories implements BaseColumns {
@@ -60,7 +62,10 @@ public class ExpensesContract {
 
         public static final Uri SUM_DATE_RANGE_CONTENT_URI =
                 Uri.withAppendedPath(DATE_RANGE_CONTENT_URI, "sum");
+        public static final Uri SUM_CONTENT_URI = Uri.withAppendedPath(CONTENT_URI, "sum");
+
     }
+
 
     protected interface CategoriesColumns {
         String NAME = "name";

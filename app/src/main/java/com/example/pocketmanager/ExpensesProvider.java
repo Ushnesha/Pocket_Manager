@@ -21,6 +21,8 @@ public class ExpensesProvider extends ContentProvider {
     public static final int CATEGORIES = 20;
     public static final int CATEGORIES_ID = 21;
 
+    public static final int EXPENSES_SUM=35;
+    public static final int EXPENSES_WITH_CATEGORIES_SUM=36;
     public static final int EXPENSES_WITH_CATEGORIES = 30;
     public static final int EXPENSES_WITH_CATEGORIES_DATE = 31;
     public static final int EXPENSES_WITH_CATEGORIES_DATE_RANGE = 32;
@@ -47,6 +49,8 @@ public class ExpensesProvider extends ContentProvider {
                 EXPENSES_WITH_CATEGORIES_SUM_DATE);
         sUriMatcher.addURI(ExpensesContract.AUTHORITY, "expensesWithCategories/dateRange/sum",
                 EXPENSES_WITH_CATEGORIES_SUM_DATE_RANGE);
+        sUriMatcher.addURI(ExpensesContract.AUTHORITY, "expenses/sum", EXPENSES_SUM);
+        sUriMatcher.addURI(ExpensesContract.AUTHORITY, "expensesWithCategories/sum", EXPENSES_WITH_CATEGORIES_SUM);
     }
 
     private static final String BASE_SELECT_JOIN_EXPENSES_CATEGORIES_QUERY =
@@ -57,6 +61,7 @@ public class ExpensesProvider extends ContentProvider {
                     EXPENSES_TABLE_NAME + " JOIN " + CATEGORIES_TABLE_NAME + " ON " +
                     EXPENSES_TABLE_NAME + "." + Expenses.CATEGORY_ID + " = " +
                     CATEGORIES_TABLE_NAME + "." + Categories._ID;
+    private static final String SELECT_JOIN_EXPENSE_CATEGORY_DESC_DATE= BASE_SELECT_JOIN_EXPENSES_CATEGORIES_QUERY+" ORDER BY "+ Expenses.DATE+" DESC";
 
     @Override
     public boolean onCreate() {
@@ -95,12 +100,19 @@ public class ExpensesProvider extends ContentProvider {
                 selectionArgs = new String[]{ uri.getLastPathSegment() };
                 break;
             case EXPENSES_WITH_CATEGORIES:
-                return mDatabase.rawQuery(BASE_SELECT_JOIN_EXPENSES_CATEGORIES_QUERY, null);
+                return mDatabase.rawQuery(SELECT_JOIN_EXPENSE_CATEGORY_DESC_DATE, null);
 
             case EXPENSES_WITH_CATEGORIES_DATE:
                 rawQuery =
                         BASE_SELECT_JOIN_EXPENSES_CATEGORIES_QUERY + " WHERE " +
                                 EXPENSES_TABLE_NAME + "." + Expenses.DATE + " = ?";
+
+                return mDatabase.rawQuery(rawQuery, selectionArgs);
+            case EXPENSES_WITH_CATEGORIES_SUM:
+                rawQuery =
+                        "SELECT SUM(" + EXPENSES_TABLE_NAME + "." + Expenses.VALUE + ") as " +
+                                Expenses.VALUES_SUM + " FROM " + EXPENSES_TABLE_NAME +
+                                " WHERE " + EXPENSES_TABLE_NAME + "." + Expenses.DATE + " = ?";
 
                 return mDatabase.rawQuery(rawQuery, selectionArgs);
             case EXPENSES_WITH_CATEGORIES_SUM_DATE:
@@ -110,6 +122,12 @@ public class ExpensesProvider extends ContentProvider {
                                 " WHERE " + EXPENSES_TABLE_NAME + "." + Expenses.DATE + " = ?";
 
                 return mDatabase.rawQuery(rawQuery, selectionArgs);
+            case EXPENSES_SUM:
+                rawQuery =
+                        "SELECT SUM(" + EXPENSES_TABLE_NAME + "." + Expenses.VALUE + ") as " +
+                                Expenses.VALUES_SUM + " FROM " + EXPENSES_TABLE_NAME;
+
+                return mDatabase.rawQuery(rawQuery, null);
             case EXPENSES_WITH_CATEGORIES_DATE_RANGE:
                 rawQuery =
                         BASE_SELECT_JOIN_EXPENSES_CATEGORIES_QUERY + " WHERE " +
@@ -161,6 +179,8 @@ public class ExpensesProvider extends ContentProvider {
                 // The incoming URI is for a single row from expenses
             case EXPENSES_ID:
                 throw new UnsupportedOperationException("Inserting rows with specified IDs is forbidden.");
+            case EXPENSES_SUM:
+                throw new UnsupportedOperationException("Sum operation can't be inserted.");
             case EXPENSES_WITH_CATEGORIES:
             case EXPENSES_WITH_CATEGORIES_DATE:
             case EXPENSES_WITH_CATEGORIES_DATE_RANGE:

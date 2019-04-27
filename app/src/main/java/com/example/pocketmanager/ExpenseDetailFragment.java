@@ -16,6 +16,7 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.widget.AppCompatSpinner;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +37,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 import io.realm.internal.Util;
+
+import static android.support.constraint.Constraints.TAG;
 
 
 /**
@@ -122,6 +125,7 @@ public class ExpenseDetailFragment extends Fragment implements LoaderManager.Loa
                     } else {
                         updateExpense(mExtraValue);
                     }
+                    Toast.makeText(getActivity(), "Changes saved", Toast.LENGTH_SHORT).show();
                     getActivity().finish();
                 }
             }
@@ -130,6 +134,8 @@ public class ExpenseDetailFragment extends Fragment implements LoaderManager.Loa
         mCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Toast.makeText(getActivity(), "Changes not saved", Toast.LENGTH_SHORT).show();
                 getActivity().finish();
             }
         });
@@ -307,11 +313,15 @@ public class ExpenseDetailFragment extends Fragment implements LoaderManager.Loa
                 Expenses.CONTENT_URI,
                 insertValues
         );
-
         Toast.makeText(getActivity(),
                 getResources().getString(R.string.expense_added),
                 Toast.LENGTH_SHORT).show();
+
     }
+
+
+
+
     private void updateExpense(long id) {
         ContentValues updateValues = new ContentValues();
         updateValues.put(Expenses.VALUE, Float.parseFloat(mValueEditText.getText().toString()));

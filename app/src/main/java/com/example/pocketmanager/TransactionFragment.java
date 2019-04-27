@@ -69,12 +69,12 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
             }
         });
 
-        rootView.findViewById(R.id.add_expense_button_if_empty_list).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                prepareExpenseToCreate();
-            }
-        });
+//        rootView.findViewById(R.id.add_expense_button_if_empty_list).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                prepareExpenseToCreate();
+//            }
+//        });
         mTotalExpSumTextView.setText(String.valueOf(0.0f));
 
         registerForContextMenu(mExpensesView);
@@ -91,11 +91,6 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
     }
 
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -107,10 +102,6 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
         getLoaderManager().initLoader(LIST_LOADER_ID, null, this);
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
 
     private void prepareExpenseToEdit(long id) {
         Intent intent = new Intent(getActivity(), ExpenseDetailActivity.class);
@@ -135,10 +126,10 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
         Uri uri = null;
         switch (i) {
             case SUM_LOADER_ID:
-                uri = ExpensesWithCategories.SUM_DATE_CONTENT_URI;
+                uri = Expenses.EXPENSES_SUM_URI;
                 break;
             case LIST_LOADER_ID:
-                uri = ExpensesWithCategories.DATE_CONTENT_URI;
+                uri = ExpensesWithCategories.CONTENT_URI;
                 break;
         }
 
@@ -151,7 +142,7 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
                 null,
                 null,
                 null,
-                null
+                Expenses.DATE+" DESC"
         );
     }
 
@@ -163,13 +154,10 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
                 if(cursor!=null){
                     valueSumIndex = cursor.getColumnIndex(Expenses.VALUES_SUM);
                 cursor.moveToFirst();
-
                 float valueSum = cursor.getFloat(valueSumIndex);
                 mTotalExpSumTextView.setText(String.valueOf(valueSum));
-                    Toast.makeText(getActivity(), "Cursor is not null", Toast.LENGTH_SHORT).show();
                 }else{
                     mTotalExpSumTextView.setText(String.valueOf(0.0f));
-                    Toast.makeText(getActivity(), "Cursor is null", Toast.LENGTH_SHORT).show();
                 }
                 break;
 
