@@ -249,7 +249,7 @@ public class ExpenseDetailFragment extends Fragment implements LoaderManager.Loa
                 cursor.moveToFirst();
                 mExpenseCategoryId = cursor.getLong(expenseCategoryIdIndex);
                 updateSpinnerSelection();
-
+                mDateButon.setText(cursor.getString(cursor.getColumnIndex(Expenses.DATE)));
                 mValueEditText.setText(String.valueOf(cursor.getFloat(expenseValueIndex)));
                 mValueEditText.selectAll();
                 break;
@@ -361,6 +361,8 @@ public class ExpenseDetailFragment extends Fragment implements LoaderManager.Loa
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 calendar.set(year, month, day);
                 mSelectDate = calendar.getTime();
+                datePicker.setMinDate(calendar.getTimeInMillis()-31536000);
+                datePicker.setMaxDate(calendar.getTimeInMillis()+31536000);
                 updateDate();
             }
         }, calendar);
