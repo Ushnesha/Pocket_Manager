@@ -44,7 +44,7 @@ public class OverviewFragment extends Fragment implements LoaderManager.LoaderCa
     private String startDateString;
     private String endDateString;
     private String dateString;
-    private Date endDate=new Date();
+    private Date endDate = new Date();
     private View mProgressBar;
     private Button strtBtn;
     private Button endBtn;
