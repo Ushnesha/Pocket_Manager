@@ -28,8 +28,9 @@ import android.widget.Toast;
 
 import com.example.pocketmanager.ExpensesContract.Expenses;
 import com.example.pocketmanager.ExpensesContract.ExpensesWithCategories;
+import com.segment.analytics.Analytics;
+
 import java.util.Date;
-import java.util.List;
 
 
 
@@ -69,12 +70,7 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
             }
         });
 
-//        rootView.findViewById(R.id.add_expense_button_if_empty_list).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                prepareExpenseToCreate();
-//            }
-//        });
+
         mTotalExpSumTextView.setText(String.valueOf(0.0f));
 
         registerForContextMenu(mExpensesView);
@@ -199,6 +195,7 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         switch (item.getItemId()) {
             case R.id.delete_expense_menu_item:
+                Analytics.with(getContext()).track(R.id.delete_expense_menu_item+" is deleted");
                 deleteExpense(info.id);
                 return true;
             default:
